@@ -2,7 +2,8 @@
 """
 Created on Mon Feb 13 11:18:16 2017
 
-@author: Joseph
+@author: Joseph Lowman
+Algorithmic Music Generator
 """
 # https://www.reddit.com/r/dailyprogrammer/comments/5q9cll/20170126_challenge_300_easyintermediate_lets_make/
 
@@ -28,9 +29,6 @@ def get_new_note(note, num_half_steps):
   half_step = 2.0**(1.0/12)
   new_note = note*(half_step)**num_half_steps
   return new_note  
-
-middle_c = 261.625565
-#solfege(middle_c)
 
 def get_next_gen(current_gen, rule_number):
   binary_rule = (bin(rule_number)[2:]).zfill(8) #convert rule_number to binary
@@ -70,10 +68,11 @@ def play_matrix(all_generations, freq, duration):
       if g: i+=1
     beep(get_new_note(freq, i), duration)
 
-all_generations = (cellular_auto(43, 50, 182))
-formatted_gen = display(all_generations)
-play_matrix(all_generations, 262, 200)
-
-
-
-      
+def main():
+  middle_c = 261.625565
+  #solfege(middle_c)
+  all_generations = (cellular_auto(43, 50, 182))
+  formatted_gen = display(all_generations)
+  play_matrix(all_generations, 262, 200)
+  
+main()
